@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filosofia | O Absurdo, a Rotina e Sísifo — Escola Estadual Vila Esperança</title>
+  <style>
+    /* =========================================================================
+       ESQUEMA DE CORES E VARIÁVEIS (PALETA ENXUTA E CONTRASTE VERIFICADO)
+       - Fundo principal: #F8F7F4 (RGB: 248, 247, 244)
+       - Superfície de card: #FFFFFF (RGB: 255, 255, 255)
+       - Texto principal: #1E293B (RGB: 30, 41, 59)
+       - Cor principal (Sísifo / Títulos): #9A3412 (RGB: 154, 52, 18)
+       - Cor de apoio 1 (Conceitos / Lucidez): #0F766E (RGB: 15, 118, 110)
+       - Cor de apoio 2 (Atividade / Reflexão): #92400E (RGB: 146, 64, 14)
+       ========================================================================= */
+    :root {
+      --bg-page: #F8F7F4;
+      --bg-card: #FFFFFF;
+      --bg-muted: #EFECE6;
+      --text-main: #1E293B;
+      --text-soft: #475569;
+      --primary: #9A3412;
+      --primary-light: #FFF7ED;
+      --teal: #0F766E;
+      --teal-light: #F0FDFA;
+      --amber: #92400E;
+      --amber-light: #FFFBEB;
+      --border: #CBD5E1;
+      --font-scale: 1;
+      --radius: 12px;
+      --shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+    }
+
+    body.high-contrast {
+      --bg-page: #090D16;
+      --bg-card: #111827;
+      --bg-muted: #1E293B;
+      --text-main: #F8FAFC;
+      --text-soft: #CBD5E1;
+      --primary: #FDBA74;
+      --primary-light: #27170E;
+      --teal: #5EEAD4;
+      --teal-light: #0B2624;
+      --amber: #FDE68A;
+      --amber-light: #291D08;
+      --border: #64748B;
+      --shadow: none;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: calc(16px * var(--font-scale));
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.65;
+    }
+
+    /* Barra de Acessibilidade */
+    .a11y-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-card);
+      border-bottom: 2px solid var(--border);
+      padding: 0.6rem 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .a11y-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+    }
+
+    .a11y-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-soft);
+      margin-right: 0.25rem;
+    }
+
+    button, .btn-link {
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.5rem 0.85rem;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      background: var(--bg-muted);
+      color: var(--text-main);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: transform 0.12s ease, opacity 0.12s ease;
+    }
+
+    button:hover, .btn-link:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    button:focus-visible, .btn-link:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 3px solid var(--teal);
+      outline-offset: 2px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+
+    body.high-contrast .btn-primary {
+      color: #090D16;
+    }
+
+    .btn-teal {
+      background: var(--teal);
+      color: #FFFFFF;
+      border-color: var(--teal);
+    }
+
+    body.high-contrast .btn-teal {
+      color: #090D16;
+    }
+
+    /* Container Principal */
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 3rem;
+    }
+
+    header.hero {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-top: 6px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.25rem;
+    }
+
+    .meta-tag {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid currentColor;
+      margin-bottom: 0.6rem;
+    }
+
+    h1 {
+      margin: 0.2rem 0 0.6rem;
+      font-size: 1.65rem;
+      line-height: 1.25;
+      color: var(--primary);
+    }
+
+    h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.3rem;
+      line-height: 1.3;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    h3 {
+      margin: 1rem 0 0.4rem;
+      font-size: 1.08rem;
+      color: var(--text-main);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.6rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--border);
+      font-size: 0.92rem;
+    }
+
+    section.card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.35rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.25rem;
+    }
+
+    .box-bncc {
+      background: var(--teal-light);
+      border-left: 5px solid var(--teal);
+      padding: 0.9rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .box-bncc .badge {
+      font-weight: 800;
+      color: var(--teal);
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .box-activity {
+      background: var(--amber-light);
+      border-left: 5px solid var(--amber);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 0.8rem;
+    }
+
+    .box-activity .badge {
+      font-weight: 800;
+      color: var(--amber);
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .poem-box {
+      background: var(--bg-muted);
+      border-radius: 10px;
+      padding: 1rem 1.15rem;
+      border: 1px solid var(--border);
+      white-space: pre-line;
+      font-size: 0.98rem;
+    }
+
+    .nuclear-text {
+      background: var(--primary-light);
+      border: 1.5px solid var(--primary);
+      border-radius: 10px;
+      padding: 1.1rem 1.2rem;
+      margin: 0.8rem 0;
+    }
+
+    .glossary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 0.8rem;
+      margin-top: 0.8rem;
+    }
+
+    .glossary-item {
+      background: var(--teal-light);
+      border: 1px solid var(--teal);
+      border-radius: 10px;
+      padding: 0.85rem;
+    }
+
+    .glossary-item strong {
+      color: var(--teal);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .media-panel {
+      background: var(--bg-muted);
+      border-radius: 10px;
+      padding: 0.9rem;
+      margin-top: 0.8rem;
+      border: 1px solid var(--border);
+    }
+
+    .media-caption {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      margin-top: 0.45rem;
+    }
+
+    .alt-note {
+      font-size: 0.84rem;
+      color: var(--text-soft);
+      font-style: italic;
+      margin-top: 0.3rem;
+    }
+
+    /* Jogo Interativo */
+    .game-status {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.8rem;
+      padding: 0.6rem 0.8rem;
+      background: var(--bg-muted);
+      border-radius: 8px;
+    }
+
+    .choices {
+      display: grid;
+      gap: 0.6rem;
+      margin: 0.8rem 0;
+    }
+
+    .choice-btn {
+      text-align: left;
+      width: 100%;
+      padding: 0.75rem 0.9rem;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-weight: 500;
+    }
+
+    .feedback-box {
+      padding: 0.85rem;
+      border-radius: 8px;
+      margin-top: 0.7rem;
+      border: 1.5px solid var(--teal);
+      background: var(--teal-light);
+    }
+
+    /* Formulário de Atividade */
+    label {
+      display: block;
+      font-weight: 700;
+      margin-top: 0.8rem;
+      margin-bottom: 0.3rem;
+    }
+
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 0.7rem;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      background: var(--bg-page);
+      color: var(--text-main);
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .abnt-ref {
+      font-size: 0.9rem;
+      background: var(--bg-muted);
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--text-soft);
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.4rem;
+      }
+      .container {
+        padding: 0.9rem 0.75rem 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- BARRA DE ACESSIBILIDADE -->
+  <nav class="a11y-bar" aria-label="Ferramentas de acessibilidade">
+    <div class="a11y-group">
+      <span class="a11y-label">Acessibilidade:</span>
+      <button type="button" id="fontDecBtn" aria-label="Diminuir tamanho da fonte">A-</button>
+      <button type="button" id="fontIncBtn" aria-label="Aumentar tamanho da fonte">A+</button>
+      <button type="button" id="contrastBtn" aria-pressed="false" aria-label="Alternar alto contraste">Alto Contraste</button>
+    </div>
+  </nav>
+
+  <main class="container" id="conteudoPrincipal">
+    <!-- CABEÇALHO E IDENTIFICAÇÃO -->
+    <header class="hero">
+      <span class="meta-tag">Cursinho Popular Pré-Enem • Turno Noturno • Tempo estimado: 35 a 45 min</span>
+      <h1>O Absurdo, a Rotina e a Lucidez: Quando a gente se acostuma?</h1>
+      <p>
+        Roteiro multimídia de Filosofia para o <strong>Cursinho Popular Pré-Enem</strong> da
+        <strong>Escola Estadual Vila Esperança</strong> (uso extraclasse no celular, até 50 minutos).
+      </p>
+
+      <div class="box-bncc">
+        <span class="badge">Habilidade BNCC — EM13CHS101</span>
+        (EM13CHS101) Identificar, analisar e comparar diferentes fontes e narrativas expressas em diversas
+        linguagens, com vistas à compreensão de ideias filosóficas e de processos e eventos históricos,
+        geográficos, políticos, econômicos, sociais, ambientais e culturais.
+      </div>
+
+      <div class="box-activity">
+        <span class="badge">Objetivos de Aprendizagem</span>
+        <p style="margin: 0;">
+          <strong>Ao final deste material, você será capaz de:</strong>
+        </p>
+        <ul style="margin: 0.4rem 0 0 1.2rem;">
+          <li>Relacionar a noção de <em>Absurdo</em> e <em>lucidez</em> em Albert Camus às experiências de rotina repetitiva e exaustão no século XX e na atualidade.</li>
+          <li>Comparar linguagens poética e filosófica na análise do cotidiano, do trabalho e do uso do tempo.</li>
+          <li>Argumentar sobre o valor do tempo livre, da escala de trabalho e da dupla jornada à luz da dignidade humana.</li>
+        </ul>
+      </div>
+
+      <div class="meta-grid">
+        <div>
+          <strong>Professor autor:</strong> Matheus do Espírito Santo
+        </div>
+        <div>
+          <strong>Currículo / Link:</strong>
+          <!-- Substitua o href abaixo pelo link real do seu Currículo Lattes ou site pessoal -->
+          <a href="https://lattes.cnpq.br/" target="_blank" rel="noopener noreferrer">Currículo Lattes / Site Pessoal</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- 1. PROBLEMATIZAÇÃO -->
+    <section class="card" id="problematizacao">
+      <h2>1. Problematização: A gente se acostuma com o quê?</h2>
+      <p>
+        Depois de um dia inteiro de trabalho, transporte lotado ou tarefas domésticas, chegar à aula noturna
+        exige energia. Às vezes, o cansaço parece tão comum que passa despercebido. Mas será que naturalizar
+        o esgotamento é inevitável?
+      </p>
+
+      <h3>Poema disparador: "A gente se acostuma" — Marina Colasanti</h3>
+      <div class="poem-box" id="poemaTexto">Eu sei que a gente se acostuma. Mas não deveria...
+A gente se acostuma a morar em apartamentos de fundos e não ter outra vista que não as janelas ao redor. E porque não tem outra vista, logo se acostuma a não olhar para fora. E porque não olha pra fora, logo se acostuma a não abrir de todo as cortinas. E porque não abre as cortinas, logo se acostuma a acender mais cedo a luz. E à medida que se acostuma, esquece o sol, esquece o ar, esquece a amplidão.
+
+A gente se acostuma a pagar por tudo o que deseja e o que necessita. E a lutar por ganhar o dinheiro com que paga. E a ganhar menos do que precisa. E a fazer fila para pagar. E a pagar mais do que as coisas valem. E a saber que cada vez pagará mais. E a procurar mais trabalho, para ganhar mais dinheiro, para ter com que pagar nas filas em que se cobra.
+
+A gente se acostuma à poluição. À luz artificial de ligeiro tremor. Ao choque que os olhos levam na luz natural. Às bactérias da água potável, à contaminação da água do mar, à lenta morte dos rios. Se acostuma a não ouvir passarinhos, a não ter galos na madrugada, a temer a hidrofobia dos cães, a não colher fruta do pé, a não ter sequer uma planta.
+
+A gente se acostuma a acordar de manhã, sobressaltado porque está na hora. A tomar café correndo porque está atrasado. A ler o jornal no ônibus porque não pode perder o tempo de viagem. A comer sanduíches porque não dá para almoçar. A sair do trabalho porque já é noite. A cochilar no ônibus porque está cansado. A deitar cedo e dormir pesado afastando uma dor aqui, um ressentimento ali, uma revolta acolá.
+
+Se o cinema está cheio, a gente senta na primeira fila e torce um pouco o pescoço. Se a praia está contaminada, a gente molha só o pé e sua o resto do corpo. Se o trabalho está duro, a gente se consola pensando no fim de semana. E se no fim de semana não há muito o que fazer, a gente vai dormir cedo e ainda fica satisfeito porque tem sempre sono atrasado.
+
+A gente se acostuma a esperar o dia inteiro e ouvir no telefone: hoje não posso ir. A sorrir para as pessoas sem receber um sorriso de volta. A ser ignorado quando precisava tanto ser visto.
+
+A gente se acostuma a andar na rua e ver cartazes. A abrir as revistas e ver anúncios, a ligar a televisão e assistir comerciais. A ir ao cinema e engolir publicidade. A ser instigado, conduzido, desnorteado, lançado na infindável catarata dos produtos.
+
+A gente se acostuma a coisas demais, para não sofrer. Em doses pequenas, tentando não perceber, vai afastando uma dor aqui, um ressentimento ali, uma revolta acolá, se o cinema está cheio, a gente senta sem ter vivido o dia.
+
+A gente se acostuma a abrir o jornal e a ler sobre a guerra. E aceitando a guerra aceita os mortos e que haja números para os mortos. E aceitando os números, aceita não acreditar nas negociações de paz. E não aceitando as negociações de paz aceita ler todo dia, de guerra, dos números, da longa duração.
+
+A gente se acostuma para não ralar na aspereza, para preservar a pele. Se acostuma para evitar feridas, sangramentos, para esquivar-se da faca e da baioneta, para poupar o peito. A gente se acostuma para poupar a vida. Que aos poucos se gasta, e que de tanto acostumar, se perde de si mesma.</div>
+    </section>
+
+    <!-- 2. CONTEXTO DO AUTOR, OBRA E TEXTO NUCLEAR -->
+    <section class="card" id="texto-nuclear">
+      <h2>2. Albert Camus, a Segunda Guerra e o Mito de Sísifo</h2>
+      <p>
+        <strong>Autor e contexto:</strong> Albert Camus (1913–1960) nasceu na Argélia (então colônia francesa) e
+        foi criado por sua mãe, trabalhadora doméstica analfabeta. Durante a Segunda Guerra Mundial (1939–1945) e a
+        atuação na resistência francesa contra o nazismo, publicou em 1942 o ensaio <em>O Mito de Sísifo</em>,
+        refletindo sobre a perda de garantias de sentido diante das crises históricas do século XX.
+      </p>
+      <p>
+        Na mitologia grega, Sísifo é condenado a empurrar uma pedra até o alto de uma montanha; ao chegar lá, a
+        rocha volta a rolar para baixo e o esforço recomeça sem fim. Camus aproxima essa imagem da repetição
+        exaustiva do trabalho moderno e pergunta como sustentar a dignidade humana sem depender de ilusões.
+      </p>
+
+      <div class="glossary-grid">
+        <div class="glossary-item">
+          <strong>Absurdo</strong>
+          Confronto entre o desejo humano de encontrar sentido, clareza e justiça no mundo e o silêncio ou a falta de sentido garantido pela realidade.
+        </div>
+        <div class="glossary-item">
+          <strong>Lucidez</strong>
+          Capacidade de encarar a própria condição e a realidade sem autoengano ou resignação cega — o momento em que o sujeito percebe o que está vivendo.
+        </div>
+      </div>
+
+      <h3>Texto nuclear — Albert Camus (<em>O Mito de Sísifo</em>)</h3>
+      <div class="nuclear-text" id="textoNuclearCamus">
+        <p>
+          Os deuses tinham condenado Sísifo a rolar incessantemente uma rocha até ao cume de uma montanha, de onde
+          a pedra voltava a cair pelo seu próprio peso. Pensaram, com alguma razão, que não há punição mais terrível
+          do que o trabalho inútil e sem esperança.
+        </p>
+        <p>
+          [...] O operário de hoje trabalha todos os dias da sua vida nas mesmas tarefas, e esse destino não é menos
+          absurdo. Mas só é trágico nos raros momentos em que se torna consciente.
+        </p>
+        <p>
+          Sísifo, proletário dos deuses, impotente e revoltado, conhece toda a extensão da sua miserável condição:
+          é nela que pensa durante a descida. A lucidez que devia causar o seu tormento consuma, ao mesmo tempo, a
+          sua vitória. Não há destino que não possa ser superado pelo desprezo. É preciso imaginar Sísifo feliz.
+        </p>
+      </div>
+
+      <div class="abnt-ref">
+        <strong>Referência (ABNT NBR 6023):</strong><br />
+        CAMUS, Albert. <em>O Mito de Sísifo</em>. Tradução de Ari Roitman e Paulina Watch. 6. ed. Rio de Janeiro:
+        BestBolso, 2016.
+      </div>
+    </section>
+
+    <!-- 3. JOGO INTERATIVO -->
+    <section class="card" id="jogo">
+      <h2>3. Jogo Interativo: Termômetro da Rotina e da Lucidez</h2>
+      <p>
+        Em cada rodada, avalie a situação apresentada à luz do poema de Colasanti e da reflexão de Camus sobre o
+        <em>Absurdo</em> e a <em>lucidez</em>.
+      </p>
+
+      <div class="game-status">
+        <span id="roundLabel">Rodada 1 de 4</span>
+        <span id="scoreLabel">Pontuação: 0 / 4</span>
+      </div>
+
+      <div id="gameQuestion" style="font-weight: 700; font-size: 1.05rem;"></div>
+      <div class="choices" id="gameChoices"></div>
+      <div id="gameFeedback"></div>
+
+      <div class="btn-row">
+        <button type="button" id="nextRoundBtn" class="btn-primary" style="display: none;">Próxima rodada</button>
+        <button type="button" id="restartGameBtn">Reiniciar jogo</button>
+      </div>
+    </section>
+
+    <!-- 4. ATIVIDADE PRÁTICA E REFLEXIVA (ATÉ 50 MIN NO TOTAL) -->
+    <section class="card" id="atividade">
+      <h2>4. Atividade Prática e Reflexiva (Tempo sugerido: ~15 min)</h2>
+      <p>
+        No Brasil, o debate sobre o fim da escala de trabalho 6x1 ganhou força a partir das mobilizações de
+        trabalhadores do setor de serviços, comércio e atendimento — áreas ocupadas em grande parte por pessoas
+        periféricas, mulheres e jovens. Discute-se como jornadas excessivas comprimem o tempo de descanso, estudo,
+        lazer e convivência, transformando o dia a dia em uma "pedra de Sísifo".
+      </p>
+
+      <form id="activityForm">
+        <label for="studentName">Nome completo (ou identificação na turma):</label>
+        <input type="text" id="studentName" placeholder="Ex.: Ana Paula / Cursinho Noturno" />
+
+        <label for="q1">
+          1) Conexão Filosófica: Albert Camus afirma que a condição do trabalhador só se torna "trágica" quando ele
+          toma consciência de sua rotina repetitiva. Em que medida o debate e a mudança na escala 6x1 expressam uma
+          tomada de consciência sobre o valor do tempo e da vida humana?
+        </label>
+        <textarea id="q1" placeholder="Escreva sua análise aqui..."></textarea>
+
+        <label for="q2">
+          2) Tempo, gênero e dignidade: Como a rotina de trabalho na escala 6x1 pode afetar de modo distinto uma
+          mulher (que frequentemente acumula a dupla jornada do trabalho doméstico e de cuidado) em relação a um
+          trabalhador homem, e como o tempo livre se vincula à dignidade humana?
+        </label>
+        <textarea id="q2" placeholder="Escreva sua análise aqui..."></textarea>
+
+        <div class="btn-row">
+          <button type="button" id="downloadTxtBtn" class="btn-primary">⬇ Baixar respostas (.txt)</button>
+          <button type="button" id="clearFormBtn">Limpar campos</button>
+        </div>
+        <p id="formStatus" class="media-caption" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- 5. CRÉDITOS E LICENÇAS -->
+    <section class="card" id="creditos">
+      <h2>5. Créditos e Referências</h2>
+      <ul>
+        <li><strong>Autoria do material didático:</strong> Matheus do Espírito Santo — Escola Estadual Vila Esperança (contexto fictício de Cursinho Popular Pré-Enem).</li>
+        <li><strong>Habilidade BNCC:</strong> EM13CHS101 (Ciências Humanas e Sociais Aplicadas — Ensino Médio).</li>
+        <li><strong>Texto nuclear:</strong> CAMUS, Albert. <em>O Mito de Sísifo</em>. Trad. Ari Roitman e Paulina Watch. 6. ed. Rio de Janeiro: BestBolso, 2016.</li>
+        <li><strong>Poema de problematização:</strong> COLASANTI, Marina. <em>A gente se acostuma</em>.</li>
+        <li><strong>Material didático e código:</strong> Produzidos para fins educacionais.</li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    // Controle de Fonte e Contraste
+    let fontScale = 1;
+    const fontIncBtn = document.getElementById("fontIncBtn");
+    const fontDecBtn = document.getElementById("fontDecBtn");
+    const contrastBtn = document.getElementById("contrastBtn");
+
+    function applyFontScale() {
+      document.documentElement.style.setProperty("--font-scale", fontScale.toFixed(2));
+    }
+
+    fontIncBtn.addEventListener("click", () => {
+      if (fontScale < 1.35) {
+        fontScale += 0.1;
+        applyFontScale();
+      }
+    });
+
+    fontDecBtn.addEventListener("click", () => {
+      if (fontScale > 0.85) {
+        fontScale -= 0.1;
+        applyFontScale();
+      }
+    });
+
+    contrastBtn.addEventListener("click", () => {
+      const active = document.body.classList.toggle("high-contrast");
+      contrastBtn.setAttribute("aria-pressed", String(active));
+    });
+
+    // Jogo Interativo
+    const questions = [
+      {
+        q: "1. Quando o poema diz que 'a gente se acostuma a coisas demais, para não sofrer', qual risco filosófico ele aponta?",
+        options: [
+          "A anestesia da sensibilidade crítica, fazendo aceitar como natural o que empobrece a vida.",
+          "A eliminação completa de qualquer regra social ou convivência coletiva.",
+          "A garantia de que o cansaço físico desaparece sem mudança nas condições de vida."
+        ],
+        correct: 0,
+        explanation: "Para Colasanti e Camus, acostumar-se sem crítica pode tornar invisíveis situações que desgastam a existência."
+      },
+      {
+        q: "2. Na leitura de Camus, por que o momento em que o trabalhador toma consciência da repetição é decisivo?",
+        options: [
+          "Porque a consciência transforma a rotina automática em lucidez e possibilidade de postura crítica.",
+          "Porque a consciência faz a pedra parar de rolar sozinha sem qualquer esforço.",
+          "Porque Camus defende que pensar sobre a própria condição é sempre um erro."
+        ],
+        correct: 0,
+        explanation: "Camus destaca que a lucidez permite encarar a própria condição de frente, em vez de viver no piloto automático."
+      },
+      {
+        q: "3. Como o debate sobre a escala de trabalho 6x1 se conecta à reflexão sobre tempo e dignidade?",
+        options: [
+          "Questiona se jornadas excessivas reduzem o tempo de descanso, estudo e vida comum a ponto de ferir a dignidade.",
+          "Defende que o tempo livre não tem relação com saúde, educação ou cidadania.",
+          "Substitui a análise filosófica por uma regra única válida para qualquer profissão."
+        ],
+        correct: 0,
+        explanation: "Debater a jornada de trabalho envolve escolher quanto tempo de vida resta para estudar, cuidar da saúde e viver em comunidade."
+      },
+      {
+        q: "4. Ao pensar a dupla jornada de muitas mulheres no cursinho noturno, o que ganha destaque?",
+        options: [
+          "A soma de trabalho remunerado e tarefas domésticas/de cuidado, que reduz ainda mais o tempo livre real.",
+          "Que tarefas domésticas não exigem tempo nem esforço cotidiano.",
+          "Que a carga horária noturna afeta exatamente da mesma forma quem não acumula trabalho doméstico."
+        ],
+        correct: 0,
+        explanation: "A desigualdade na divisão do trabalho doméstico e do cuidado impacta diretamente o tempo disponível para estudo e descanso."
+      }
+    ];
+
+    let currentIdx = 0;
+    let score = 0;
+    let answered = false;
+
+    const roundLabel = document.getElementById("roundLabel");
+    const scoreLabel = document.getElementById("scoreLabel");
+    const gameQuestion = document.getElementById("gameQuestion");
+    const gameChoices = document.getElementById("gameChoices");
+    const gameFeedback = document.getElementById("gameFeedback");
+    const nextRoundBtn = document.getElementById("nextRoundBtn");
+    const restartGameBtn = document.getElementById("restartGameBtn");
+
+    function renderRound() {
+      answered = false;
+      nextRoundBtn.style.display = "none";
+      gameFeedback.innerHTML = "";
+      roundLabel.textContent = `Rodada ${currentIdx + 1} de ${questions.length}`;
+      scoreLabel.textContent = `Pontuação: ${score} / ${questions.length}`;
+
+      const item = questions[currentIdx];
+      gameQuestion.textContent = item.q;
+      gameChoices.innerHTML = "";
+
+      item.options.forEach((opt, idx) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "choice-btn";
+        btn.textContent = opt;
+        btn.addEventListener("click", () => handleAnswer(idx));
+        gameChoices.appendChild(btn);
+      });
+    }
+
+    function handleAnswer(selectedIdx) {
+      if (answered) return;
+      answered = true;
+      const item = questions[currentIdx];
+      const isRight = selectedIdx === item.correct;
+      if (isRight) score += 1;
+
+      scoreLabel.textContent = `Pontuação: ${score} / ${questions.length}`;
+      gameFeedback.innerHTML = `
+        <div class="feedback-box">
+          <strong>${isRight ? "✔ Resposta coerente com o texto!" : "ℹ Ponto de atenção:"}</strong>
+          <p style="margin: 0.3rem 0 0;">${item.explanation}</p>
+        </div>
+      `;
+
+      if (currentIdx < questions.length - 1) {
+        nextRoundBtn.style.display = "inline-flex";
+      } else {
+        gameFeedback.innerHTML += `
+          <p style="margin-top: 0.6rem; font-weight: 700;">
+            Fim do jogo! Você fez ${score} de ${questions.length} pontos. Agora siga para a atividade reflexiva abaixo.
+          </p>
+        `;
+      }
+    }
+
+    nextRoundBtn.addEventListener("click", () => {
+      if (currentIdx < questions.length - 1) {
+        currentIdx += 1;
+        renderRound();
+      }
+    });
+
+    restartGameBtn.addEventListener("click", () => {
+      currentIdx = 0;
+      score = 0;
+      renderRound();
+    });
+
+    renderRound();
+
+    // Exportação das respostas da atividade (.txt)
+    const downloadTxtBtn = document.getElementById("downloadTxtBtn");
+    const clearFormBtn = document.getElementById("clearFormBtn");
+    const formStatus = document.getElementById("formStatus");
+
+    downloadTxtBtn.addEventListener("click", () => {
+      try {
+        const nome = document.getElementById("studentName").value.trim() || "Estudante";
+        const r1 = document.getElementById("q1").value.trim() || "(Não respondida)";
+        const r2 = document.getElementById("q2").value.trim() || "(Não respondida)";
+
+        const conteudo = [
+          "ESCOLA ESTADUAL VILA ESPERANÇA — CURSINHO POPULAR PRÉ-ENEM",
+          "FILOSOFIA — HABILIDADE BNCC: EM13CHS101",
+          "PROFESSOR: MATHEUS DO ESPÍRITO SANTO",
+          "------------------------------------------------------------",
+          `ESTUDANTE: ${nome}`,
+          "",
+          "1) CONEXÃO FILOSÓFICA (CAMUS, ROTINA E ESCALA 6X1):",
+          r1,
+          "",
+          "2) TEMPO, GÊNERO E DIGNIDADE (DUPLA JORNADA E TEMPO LIVRE):",
+          r2
+        ].join("\n");
+
+        const blob = new Blob([conteudo], { type: "text/plain;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "atividade_filosofia_camus_6x1.txt";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        formStatus.textContent = "Arquivo .txt gerado com suas respostas.";
+      } catch (e) {
+        formStatus.textContent = "Não foi possível gerar o arquivo .txt neste ambiente.";
+      }
+    });
+
+    clearFormBtn.addEventListener("click", () => {
+      document.getElementById("activityForm").reset();
+      formStatus.textContent = "Campos limpos.";
+    });
+  </script>
+</body>
+</html>
